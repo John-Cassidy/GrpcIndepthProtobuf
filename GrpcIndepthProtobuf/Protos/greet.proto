@@ -4,18 +4,22 @@ option csharp_namespace = "GrpcIndepthProtobuf";
 
 package greet;
 
-// The greeting service definition.
 service Greeter {
-  // Sends a greeting
-  rpc SayHello (HelloRequest) returns (HelloReply);
+  rpc SayHello (HelloRequest) returns (HelloReply); // Unary RPC
+  rpc RequestManyHellos (stream HelloRequest) returns (HelloReply); // Client-streaming RPC
+  rpc SayManyHellos (HelloRequest) returns (stream HelloReply); // Server-streaming RPC
+  rpc RequestAndSayManyHellos (stream HelloRequest) returns (stream HelloReply); // Bi-directional streaming RPC
 }
 
-// The request message containing the user's name.
 message HelloRequest {
-  string name = 1;
+  string name = 1; // Name of the client to say hello to
 }
 
-// The response message containing the greetings.
 message HelloReply {
   string message = 1;
 }
+
+// This is a single line comment
+
+/* This is
+a multiline comment */

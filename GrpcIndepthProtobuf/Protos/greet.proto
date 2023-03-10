@@ -22,7 +22,14 @@ message HelloReply {
   ExternalEnum external_enum_field = 4;
   NestedMessage nested_message_field = 5;
   message NestedMessage {
-    
+    repeated string string_collection = 1;
+    repeated int32 int_collection = 2;
+    repeated BasicTypes object_collection = 3;
+    repeated ExternalEnum enum_collection = 4;
+    map<string, string> string_to_string_map = 5;
+    map<int64, string> int_to_string_map = 6;
+    map<sfixed32, BasicTypes> signedfixed_to_object_map = 7;
+    map<uint64, ExternalEnum> unsignedint_to_enum_map = 8;
   }
 }
 

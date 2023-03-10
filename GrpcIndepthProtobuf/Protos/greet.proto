@@ -17,6 +17,13 @@ message HelloRequest {
 
 message HelloReply {
   string message = 1;
+  BasicTypes basic_types_field = 2;
+  BasicTypes.InternalEnum internal_enum_field = 3;
+  ExternalEnum external_enum_field = 4;
+  NestedMessage nested_message_field = 5;
+  message NestedMessage {
+    
+  }
 }
 
 message BasicTypes {

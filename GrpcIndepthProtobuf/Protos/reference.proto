@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcIndepthProtobuf.Reference";
+
+package greet.reference;
+
+message ReferenceMessage {
+  string description = 1;
+}

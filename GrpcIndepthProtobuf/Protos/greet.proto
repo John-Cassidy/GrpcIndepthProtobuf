@@ -2,6 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "GrpcIndepthProtobuf";
 
+import "google/protobuf/any.proto";
+import "Protos/reference.proto";
+
 package greet;
 
 service Greeter {
@@ -20,7 +23,9 @@ message HelloReply {
   BasicTypes basic_types_field = 2;
   BasicTypes.InternalEnum internal_enum_field = 3;
   ExternalEnum external_enum_field = 4;
-  NestedMessage nested_message_field = 5;
+  NestedMessage nested_message_field = 5 [deprecated = true];
+  google.protobuf.Any external_reference_field = 6;
+  greet.reference.ReferenceMessage internal_reference_field = 7;
   message NestedMessage {
     repeated string string_collection = 1;
     repeated int32 int_collection = 2;
@@ -63,7 +68,9 @@ message BasicTypes {
 }
 
 enum ExternalEnum {
+  option allow_alias = true;
   NONE = 0;
   SINGLE = 1;
+  FEW = 2;
   MANY = 2;
 }
